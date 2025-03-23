@@ -1,0 +1,105 @@
+
+
+Table Asignacion_ruta{
+    idAsignacion int [pk]
+    idRuta int [ref: - Ruta.idRuta]
+    idPedido int [ref: - Pedido.idPedido]
+}
+
+Table Pedido{
+    idPedido int [pk]
+    idRemitente int [ref: - Cliente.idCliente]
+    idDestinatario int [ref: < Cliente.idCliente]
+    tipo_paquete PAQUETE 
+    piezas int
+    recoge_oficina boolean
+    fecha date
+    hora time
+    ipo_pago PAGO
+    codigo int [not null]
+}
+
+Table PAQUETE{
+    Paquete string
+    Sobres string
+    Caja string
+    Otros string
+}
+
+Table PAGO{
+    Tarjeta string
+    Efectivo string
+    Transferencia string
+    Otros string
+}
+
+Table Cliente{
+    idCliente int [pk]
+    nombre varchar
+    apellido varchar
+    direccion_id int [ref: < Direccion.idDireccion]
+    telefono varchar
+    email varchar
+    nit varchar
+}
+
+Table Direccion{
+    idDireccion int [pk]
+    direccion text
+    departamento varchar
+    pais varchar
+}
+
+Table Pedido_Temporal{
+    idPedido int [pk]
+    idRemitente int [ref: - Cliente.idCliente]
+    idDestinatario int [ref: < Cliente.idCliente]
+    tipo_paquete PAQUETE [not null]
+    fecha date [not null]
+    hora time [not null]
+    ipo_pago PAGO [not null]
+    codigo int [not null]
+}
+
+Table Ruta{
+    idRuta int [pk]
+    token_id int [ref: > token.idToken]
+    idSucursal int [ref: > Sucursal.idSucursal]
+    zona varchar
+    municipio varchar
+    departamento varchar
+    pais varchar
+}
+
+Table token{
+    idToken int [pk]
+    token int
+    usuario_solicitante int [ref: - Operadora.idOperadora]
+    tarifa float
+    descripcion text
+}
+
+Table Sucursal{
+    idSucursal int [pk]
+    nombre varchar
+    direccion text
+    telefono varchar
+    zona varchar
+    municipio varchar
+    departamento varchar
+    pais varchar
+}
+
+Table Operadora{
+    idOperadora int [pk]
+    nombre varchar
+    telefono varchar
+    email varchar
+    tipo varchar
+}
+
+Table Rendimiento{
+    idRendimiento int [pk]
+    fecha date
+    idOperadora int [ref: > Operadora.idOperadora]
+}
