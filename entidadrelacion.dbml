@@ -1,13 +1,12 @@
 
-
 Table Asignacion_ruta{
     idAsignacion int [pk]
     idRuta int [ref: - Ruta.idRuta]
-    idPedido int [ref: - Pedido.idPedido]
+    idServicio int [ref: - Servicio.idServicio]
 }
 
-Table Pedido{
-    idPedido int [pk]
+Table Servicio{
+    idServicio int [pk]
     idRemitente int [ref: - Cliente.idCliente]
     idDestinatario int [ref: < Cliente.idCliente]
     tipo_paquete PAQUETE 
@@ -50,8 +49,8 @@ Table Direccion{
     pais varchar
 }
 
-Table Pedido_Temporal{
-    idPedido int [pk]
+Table Servicio_Temporal{
+    idServicio int [pk]
     idRemitente int [ref: - Cliente.idCliente]
     idDestinatario int [ref: < Cliente.idCliente]
     tipo_paquete PAQUETE [not null]

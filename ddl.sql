@@ -18,8 +18,8 @@ CREATE TABLE Cliente (
 CREATE TYPE PAQUETE AS ENUM ('Paquete', 'Sobres', 'Caja', 'Otros');
 CREATE TYPE PAGO AS ENUM ('Tarjeta', 'Efectivo', 'Transferencia', 'Otros');
 
-CREATE TABLE Pedido (
-    idPedido SERIAL PRIMARY KEY,
+CREATE TABLE Servicio (
+    idServicio SERIAL PRIMARY KEY,
     idRemitente INT REFERENCES Cliente(idCliente),
     idDestinatario INT REFERENCES Cliente(idCliente),
     tipo_paquete PAQUETE NOT NULL,
@@ -31,8 +31,8 @@ CREATE TABLE Pedido (
     codigo INT NOT NULL
 );
 
-CREATE TABLE Pedido_Temporal (
-    idPedido SERIAL PRIMARY KEY,
+CREATE TABLE Servicio_Temporal (
+    idServicio SERIAL PRIMARY KEY,
     idRemitente INT REFERENCES Cliente(idCliente),
     idDestinatario INT REFERENCES Cliente(idCliente),
     tipo_paquete PAQUETE NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE Ruta (
 CREATE TABLE Asignacion_ruta (
     idAsignacion SERIAL PRIMARY KEY,
     idRuta INT REFERENCES Ruta(idRuta),
-    idPedido INT REFERENCES Pedido(idPedido)
+    idServicio INT REFERENCES Servicio(idServicio)
 );
 
 CREATE TABLE Rendimiento (

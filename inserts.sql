@@ -38,20 +38,20 @@ INSERT INTO Ruta (token_id, idSucursal, zona, municipio, departamento, pais) VAL
 (2, 2, 'Centro', 'San Salvador', 'San Salvador', 'El Salvador'),
 (3, 3, 'Norte', 'Managua', 'Managua', 'Nicaragua');
 
--- Insertar datos en la tabla Pedido
-INSERT INTO Pedido (idRemitente, idDestinatario, tipo_paquete, piezas, recoge_oficina, fecha, hora, ipo_pago, codigo) VALUES
+-- Insertar datos en la tabla Servicio
+INSERT INTO Servicio (idRemitente, idDestinatario, tipo_paquete, piezas, recoge_oficina, fecha, hora, ipo_pago, codigo) VALUES
 (1, 2, 'Caja', 2, true, '2024-03-24', '10:30:00', 'Tarjeta', 5001),
 (2, 3, 'Sobres', 1, false, '2024-03-25', '14:45:00', 'Efectivo', 5002),
 (3, 4, 'Paquete', 3, true, '2024-03-26', '09:15:00', 'Transferencia', 5003),
 (4, 5, 'Otros', 1, false, '2024-03-27', '16:20:00', 'Otros', 5004);
 
--- Insertar datos en la tabla Pedido_Temporal
-INSERT INTO Pedido_Temporal (idRemitente, idDestinatario, tipo_paquete, fecha, hora, ipo_pago, codigo) VALUES
+-- Insertar datos en la tabla Servicio_Temporal
+INSERT INTO Servicio_Temporal (idRemitente, idDestinatario, tipo_paquete, fecha, hora, ipo_pago, codigo) VALUES
 (1, 2, 'Sobres', '2024-03-28', '11:00:00', 'Tarjeta', 6001),
 (2, 3, 'Caja', '2024-03-29', '15:30:00', 'Efectivo', 6002);
 
 -- Insertar datos en la tabla Asignacion_ruta
-INSERT INTO Asignacion_ruta (idRuta, idPedido) VALUES
+INSERT INTO Asignacion_ruta (idRuta, idServicio) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -69,7 +69,7 @@ SELECT * FROM Operadora;
 SELECT * FROM token;
 SELECT * FROM Sucursal;
 SELECT * FROM Ruta;
-SELECT * FROM Pedido;
-SELECT * FROM Pedido_Temporal;
+SELECT * FROM Servicio;
+SELECT * FROM Servicio_Temporal;
 SELECT * FROM Asignacion_ruta;
 SELECT * FROM Rendimiento;
