@@ -27,7 +27,7 @@ CREATE TABLE Pedido (
     recoge_oficina BOOLEAN NOT NULL,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
-    ipo_pago PAGO NOT NULL,
+    tipo_pago PAGO NOT NULL,
     codigo INT NOT NULL
 );
 
